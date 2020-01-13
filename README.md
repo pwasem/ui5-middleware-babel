@@ -7,7 +7,7 @@ For maximum flexibility no babel [configuration files](https://babeljs.io/docs/e
 
 Instead you have to manage your configuration and presets within your project according to your needs.
 
-The task will simply call [babel.transformAsync](https://babeljs.io/docs/en/babel-core#transformasync) which will use your local [configuration files](https://babeljs.io/docs/en/config-files) for all your project's javascript resources.
+The middleware will simply call [babel.transformAsync](https://babeljs.io/docs/en/babel-core#transformasync) which will use your local [configuration files](https://babeljs.io/docs/en/config-files) for all your project's javascript resources.
 
 ## Prerequisites
 Make sure your project is using the latest [UI5 Tooling](https://sap.github.io/ui5-tooling/pages/GettingStarted/).
@@ -28,7 +28,7 @@ Or `npm`:
 npm i -D ui5-middleware-babel @babel/core
 ```
 
-Additionally the custom middleware needs to be manually defined as a `ui5.dependencies` in your project's `package.json`:
+Additionally the custom middleware needs to be manually defined in `ui5.dependencies` in your project's `package.json`:
 ```json
 {
   "ui5": {
@@ -42,7 +42,7 @@ Additionally the custom middleware needs to be manually defined as a `ui5.depend
 ### Configure
 
 #### Custom middleware
-Register the custom task in your project's `ui5.yaml`:
+Register the custom middleware in your project's `ui5.yaml`:
 ```yaml
 server:
   customMiddleware:
@@ -51,7 +51,7 @@ server:
       afterMiddleware: compression
       configuration:
         debug: true
-        enabled: true
+        enabled: true,
         excludes:
           - '/test/**'
           - '/localService/**'
