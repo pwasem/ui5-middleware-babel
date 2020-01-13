@@ -1,6 +1,6 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-# ui5-middleware-http-proxy
+# ui5-middleware-babel
 Custom UI5 middleware extension for transpiling code using [babel](https://babeljs.io/) including caching.
 
 For maximum flexibility no babel [configuration files](https://babeljs.io/docs/en/config-files) or [presets](https://babeljs.io/docs/en/presets) will be provided by the custom middleware.
@@ -17,15 +17,15 @@ Make sure your project is using the latest [UI5 Tooling](https://sap.github.io/u
 ### Install
 
 #### Custom middleware
-Add the custom middleware as a _devDependency_ to your project.
+Add the custom middleware and its peer dependencies as `devDependencies` to your project.
 
 With `yarn`:
 ```sh
-yarn add -D ui5-middleware-babel
+yarn add -D ui5-middleware-babel @babel/core
 ```
 Or `npm`:
 ```sh
-npm i -D ui5-middleware-babel
+npm i -D ui5-middleware-babel @babel/core
 ```
 
 Additionally the custom middleware needs to be manually defined as a _ui5 dependency_ in your project's `package.json`:
