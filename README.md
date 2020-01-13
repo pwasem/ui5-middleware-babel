@@ -28,7 +28,7 @@ Or `npm`:
 npm i -D ui5-middleware-babel @babel/core
 ```
 
-Additionally the custom middleware needs to be manually defined as a _ui5 dependency_ in your project's `package.json`:
+Additionally the custom middleware needs to be manually defined as a `ui5.dependencies` in your project's `package.json`:
 ```json
 {
   "ui5": {
@@ -62,8 +62,8 @@ server:
 #### Options
 The custom middleware accepts the following configuration options
 
-|   name   |   type   |                     description                    | mandatory | default |             examples             |
-|:--------:|:--------:|:--------------------------------------------------:|:---------:|:-------:|:--------------------------------:|
-|   debug  |  boolean |              enable/disable debug logs             |     no    | `false` |          `true`, `false`         |
-|  enabled |  boolean |                   enable/disable                   |     no    |  `true` |          `true`, `false`         |
-| excludes | string[] | list of files which should be transformed by babel |     no    |    []   | [`/test/**`, `/localService/**`] |
+|   name   |   type   |                     description                        | mandatory | default |             examples             |
+|:--------:|:--------:|:------------------------------------------------------:|:---------:|:-------:|:--------------------------------:|
+|   debug  |  boolean |              enable/disable debug logs                 |     no    | `false` |          `true`, `false`         |
+|  enabled |  boolean |                   enable/disable                       |     no    |  `true` |          `true`, `false`         |
+| excludes | string[] | list of files which should not be transformed by babel |     no    |    []   | [`/test/**`, `/localService/**`] |
