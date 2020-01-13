@@ -39,6 +39,20 @@ Additionally the custom middleware needs to be manually defined in `ui5.dependen
 }
 ```
 
+#### Babel presets
+Add at least one babel [preset](https://babeljs.io/docs/en/presets) to your project's `devDependencies`, e.g. [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env).
+
+With `yarn`:
+```sh
+yarn add -D @babel/preset-env
+```
+Or `npm`:
+```sh
+npm i -D @babel/preset-env
+```
+
+You can learn more about babel presets [here](https://babeljs.io/docs/en/presets).
+
 ### Configure
 
 #### Custom middleware
@@ -57,6 +71,26 @@ server:
           - '/localService/**'
 ```
 
+#### Babel config
+Create a babel config file, e.g `babel.config.js` in your project's root directory:
+```javascript
+module.exports = api => {
+  api.cache(true)
+  const presets = [
+    '@babel/preset-env'
+  ]
+  const plugins = []
+  return {
+    presets,
+    plugins
+  }
+}
+```
+You can learn more about babel config files [here](https://babeljs.io/docs/en/config-files).
+
+### Usage
+Simply run `ui5 serve` to transpile your code on the fly when running your project.
+
 ### Additional configuration
 
 #### Options
@@ -67,3 +101,15 @@ The custom middleware accepts the following configuration options
 |   debug  |  boolean |              enable/disable debug logs                 |     no    | `false` |          `true`, `false`         |
 |  enabled |  boolean |                   enable/disable                       |     no    |  `true` |          `true`, `false`         |
 | excludes | string[] | list of files which should not be transformed by babel |     no    |    []   | [`/test/**`, `/localService/**`] |
+
+#### Browserlist
+Consider adding a [browserlist](https://github.com/browserslist/browserslist) configuration to your project for controlling your target browsers. This configuration will [automatically be used by babel](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration).
+
+E.g. create a file `.browserslistrc` in your project's root directory:
+```
+> 0.25%
+not dead
+```
+
+#### Polyfills
+For adding required polyfills for ECMAScript features and transpiled generator functions to your app please see [ui5-shim-babel-polyfill](https://github.com/pwasem/ui5-shim-babel-polyfill).
