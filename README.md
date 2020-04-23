@@ -64,8 +64,9 @@ server:
     - name: ui5-middleware-babel
       afterMiddleware: compression
       configuration:
+        enabled: true
         debug: true
-        enabled: true,
+        wrap: true
         excludes:
           - '/test/**'
           - '/localService/**'
@@ -80,9 +81,11 @@ module.exports = api => {
     '@babel/preset-env'
   ]
   const plugins = []
+  const sourceType = 'script'
   return {
     presets,
-    plugins
+    plugins,
+    sourceType
   }
 }
 ```
@@ -96,11 +99,12 @@ Simply run `ui5 serve` to transpile your code on the fly when running your proje
 #### Options
 The custom middleware accepts the following configuration options
 
-|   name   |   type   |                     description                        | mandatory | default |             examples             |
-|:--------:|:--------:|:------------------------------------------------------:|:---------:|:-------:|:--------------------------------:|
-|   debug  |  boolean |              enable/disable debug logs                 |     no    | `false` |          `true`, `false`         |
-|  enabled |  boolean |                   enable/disable                       |     no    |  `true` |          `true`, `false`         |
-| excludes | string[] | list of files which should not be transformed by babel |     no    |    []   | [`/test/**`, `/localService/**`] |
+|   name   |   type   | description                                                                                | mandatory | default | examples                         |
+|:--------:|:--------:|:------------------------------------------------------------------------------------------:|:---------:|:-------:|:--------------------------------:|
+| enabled  | boolean  | enable/disable                                                                             |     no    |  `true` |          `true`, `false`         |
+| debug    | boolean  | enable/disable debug logs                                                                  |     no    | `false` |          `true`, `false`         |
+| wrap     | boolean  | wrap transformed code in an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) |     no    |  `true` |          `true`, `false`         |
+| excludes | string[] | files globs which should not be transformed by babel                                       |     no    |    []   | [`/test/**`, `/localService/**`] |
 
 #### Browserlist
 Consider adding a [browserlist](https://github.com/browserslist/browserslist) configuration to your project for controlling your target browsers. This configuration will [automatically be used by babel](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration).
