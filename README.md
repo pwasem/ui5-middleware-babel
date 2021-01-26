@@ -114,6 +114,3 @@ E.g. create a file `.browserslistrc` in your project's root directory:
 > 0.25%
 not dead
 ```
-
-#### Polyfills
-For adding required polyfills for ECMAScript features and transpiled generator functions to your app please see [ui5-shim-babel-polyfill](https://github.com/pwasem/ui5-shim-babel-polyfill).
